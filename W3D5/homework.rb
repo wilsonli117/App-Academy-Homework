@@ -23,7 +23,7 @@ class Queue
     end
 
     def enqueue(el)
-        @queue << el
+        @queue << el (push)
     end
 
     def dequeue
@@ -42,7 +42,8 @@ class Map
     end
 
     def set(key, value)
-        if get(key) != false
+        if get(key) #!= false don't even need this condition because get(key) will either be "truthy" or false
+            #@map.index {|pair| pair[0] == key } will return nil if it doesn't find it
             @map.each { |pair| pair[1] = value if pair[0] == key }
         else
             @map << [key,value]
@@ -59,7 +60,11 @@ class Map
     end
 
     def show
-        @map
+        deep_dup(@map) #needs to be a deep dup because 
+    end
+
+    def deep_dup(arr)
+        arr.map { |el| el.is_a?(Array) ? deep_dup(el) : el }
     end
 
 end
