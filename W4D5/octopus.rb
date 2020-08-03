@@ -5,7 +5,7 @@ def sluggish_octopus(arr)
 
     arr.each do |ele|
         arr.each do |ele2|
-            biggest = ele if ele.length >= ele2.length\
+            biggest = ele if ele.length >= ele2.length
         end
     end
     biggest
